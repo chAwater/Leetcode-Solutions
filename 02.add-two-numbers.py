@@ -52,3 +52,35 @@ class Solution1:
                 return ListNode(val=new_val)
 
         return addWithCarry(l1, l2)
+
+
+class Solution2:
+    '''
+    Date: 2022.03.31
+    Pass/Error/Bug: 1/0/0
+    执行用时：68 ms, 在所有 Python3 提交中击败了 25.46% 的用户
+    内存消耗：15 MB, 在所有 Python3 提交中击败了 12.26% 的用户
+    '''
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        n1s = []
+        n2s = []
+
+        while l1:
+            n1s.append(str(l1.val))
+            l1 = l1.next
+
+        while l2:
+            n2s.append(str(l2.val))
+            l2 = l2.next
+
+        n1s = int(''.join(n1s[::-1]))
+        n2s = int(''.join(n2s[::-1]))
+
+        s = n1s + n2s
+
+        prev = None
+        for i in str(s):
+            out = ListNode(int(i), prev)
+            prev = out
+
+        return out
