@@ -1,10 +1,14 @@
+# https://leetcode-cn.com/problems/two-sum/
+
 from typing import List
+
 
 class Solution1:
     '''
     Date: 2022.03.30
-    执行用时：40 ms, 在所有 Python3 提交中击败了 72.05% 的用户
-    内存消耗：16.8 MB, 在所有 Python3 提交中击败了 5.00% 的用户
+    Pass/Error/Bug: 1/3/3
+    执行用时：40.0 ms, 在所有 Python3 提交中击败了 72.05% 的用户
+    内存消耗：16.8 MB, 在所有 Python3 提交中击败了  5.00% 的用户
     '''
     def twoSum(self, nums: List[int], target: int) -> List[int]:
 
@@ -19,7 +23,7 @@ class Solution1:
         for v1, idxs1 in v_dict.items():
             v2 = target - v1
             if v1 == v2:
-                if len(idxs1)>=2:
+                if len(idxs1) >= 2:
                     return idxs1[0], idxs1[1]
             elif v2 in v_dict:
                 idxs2 = v_dict[v2]
