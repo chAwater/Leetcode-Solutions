@@ -36,3 +36,19 @@ class Solution1:
                 return idx1, idx2
             else:
                 continue
+
+
+class Solution2:
+    '''
+    Date: 2022.03.30
+    Pass/Error/Bug: 1/3/0
+    执行用时：4.192 s, 在所有 Python3 提交中击败了  6.52% 的用户
+    内存消耗：15.6 MB, 在所有 Python3 提交中击败了 63.55% 的用户
+    '''
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        for i in range(len(nums)):
+            a = nums[i]
+            for j in range(len(nums[i+1:])):
+                b = nums[i+1+j]
+                if target == a+b:
+                    return i, i+1+j
