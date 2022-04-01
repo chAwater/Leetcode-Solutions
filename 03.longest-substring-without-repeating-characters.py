@@ -67,3 +67,20 @@ class Solution2:
                 i_end += 1
                 if max_sub_l < sub_l:
                     max_sub_l = sub_l
+
+
+def test(c):
+    f = c.lengthOfLongestSubstring
+    assert f('au') == 2, f('au')
+    assert f("abcabcbb") == 3, f("abcabcbb")
+    assert f('aba') == 2, f('aba')
+    assert f('') == 0, f('')
+    assert f(' ') == 1, f(' ')
+    print ('Pass:{}'.format(str(c.__class__)))
+
+
+c1 = Solution1()
+c2 = Solution2()
+
+test(c1)
+test(c2)
