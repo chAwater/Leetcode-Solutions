@@ -11,8 +11,12 @@ class Solution1:
     内存消耗：16.1 MB, 在所有 Python3 提交中击败了 17.90% 的用户
     '''
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-
+        '''
+        Hash index for number positions
+        '''
         # Build hash for index
+        # Save as a index list if the number is duplicated
+        # Eg. { num1 : pos, num2 : [pos1, pos2] }
         v_dict = {}
         for i, v in enumerate(nums):
             if v in v_dict:
@@ -24,6 +28,7 @@ class Solution1:
             else:
                 v_dict[v] = i
 
+        # Check the hash to find the target
         for v1, idxs1 in v_dict.items():
             v2 = target - v1
             if v1 == v2:
@@ -46,6 +51,9 @@ class Solution2:
     内存消耗：15.6 MB, 在所有 Python3 提交中击败了 56.00% 的用户
     '''
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        '''
+        Brutal force find
+        '''
         for i in range(len(nums)):
             a = nums[i]
             b = target - a
