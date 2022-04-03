@@ -1,6 +1,7 @@
 # https://leetcode-cn.com/problems/median-of-two-sorted-arrays/
 
 from typing import List
+from math import isclose
 
 
 class Solution1:
@@ -61,3 +62,24 @@ class Solution1:
             k1 = (l1 + l2 + 1) // 2
             k2 = (l1 + l2 + 2) // 2
             return (self.findKth(nums1, nums2, k1) + self.findKth(nums1, nums2, k2)) / 2
+
+
+c1 = Solution1()
+
+
+def test(c):
+    f = c.findMedianSortedArrays
+    assert isclose(f([1, 3], [2]), 2), f([1, 3], [2])
+    assert isclose(f([2], [1, 3]), 2), f([2], [1, 3])
+    assert isclose(f([4], [1, 3]), 3), f([4], [1, 3])
+    assert isclose(f([1, 2], [3, 4]), 2.5), f([1, 2], [3, 4])
+    assert isclose(f([1], [2]), 1.5), f([1], [2])
+    assert isclose(f([], [1, 2]), 1.5), f([], [1, 2])
+    assert isclose(f([], [1, 2, 3]), 2), f([], [1, 2, 3])
+    assert isclose(f([3], [-2, -1]), -1), f([3], [-2, -1])
+    assert isclose(f([1, 3], [2, 7]), 2.5), f([1, 3], [2, 7])
+    assert isclose(f([1], [2, 3, 4, 5, 6]), 3.5), f([1], [2, 3, 4, 5, 6])
+    print('Pass:{}'.format(str(c.__class__)))
+
+
+test(c1)
