@@ -1,6 +1,9 @@
 # https://leetcode-cn.com/problems/string-to-integer-atoi/
 
-class Solution:
+import re
+
+
+class Solution1:
     '''
     Date: 2022.04.06
     Pass/Error/Bug: 1/3/1
@@ -38,3 +41,18 @@ class Solution:
         if ns < -2**31:
             return -2**31
         return ns
+
+
+class Solution2:
+    '''
+    Date: 2022.04.06
+    Pass/Error/Bug: 1/2/1
+    执行用时：  44 ms, 在所有 Python3 提交中击败了 41.37% 的用户
+    内存消耗：14.8 MB, 在所有 Python3 提交中击败了 94.41% 的用户
+    '''
+    def myAtoi(self, s: str) -> int:
+        ns = re.findall(r'^[\+\-]?\d+', s.lstrip(' '))
+        if ns:
+            return max(min(int(ns[0]), 2**31-1), -2**31)
+        else:
+            return 0
