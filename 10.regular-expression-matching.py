@@ -84,3 +84,21 @@ class Solution1:
                     p_idx += 1
 
         return True
+
+
+c1 = Solution1()
+
+
+def test(c):
+    f = c.isMatch
+    assert f("a", ".*..a*") == False
+    assert f("a", "ab*") == True
+    assert f("aa", "a*") == True
+    assert f("a", "ab..a*") == False
+    assert f("aaa", "ab*a*c*a") == True
+    assert f("a", "ab*a") == False
+    assert f("aaa", "a*") == True
+    print('Pass:{}'.format(str(c.__class__)))
+
+
+test(c1)
