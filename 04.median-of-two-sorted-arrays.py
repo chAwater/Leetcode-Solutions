@@ -12,25 +12,35 @@ class Solution1:
     内存消耗：15.1 MB, 在所有 Python3 提交中击败了 59.49% 的用户
     '''
     # 递归函数
+    # K is 1-based
     def findKth(self, nums1: List[int], nums2: List[int], k: int) -> int:
-        # k is 1-based
+
+        # One list is empty
         if len(nums1) == 0:
             return nums2[k-1]
         if len(nums2) == 0:
             return nums1[k-1]
 
+        # First one is the minimum one
         if k == 1:
             return min(nums1[0], nums2[0])
 
+        # Find K/2 in each list
         half_k = k // 2
 
+        # For one list length shorter than K/2
+        # Pick the last one and compare
         if len(nums1) < half_k:
             n1 = nums1[-1]
             n2 = nums2[half_k-1]
             if n1 >= n2:
+                # The number in shorter list is bigger
+                # Remove K/2 in the longer list, than find (K - K/2)
                 nums2 = nums2[half_k:]
                 return self.findKth(nums1, nums2, k-half_k)
             else:
+                # The number in longer list is bigger
+                # Remove the shorter list, than find (K - shorter list length)
                 return self.findKth([], nums2, k-len(nums1))
         elif len(nums2) < half_k:
             n1 = nums1[half_k-1]
