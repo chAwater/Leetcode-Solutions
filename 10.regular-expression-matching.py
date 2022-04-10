@@ -91,13 +91,13 @@ c1 = Solution1()
 
 def test(c):
     f = c.isMatch
-    assert f("a", ".*..a*") == False
-    assert f("a", "ab*") == True
-    assert f("aa", "a*") == True
-    assert f("a", "ab..a*") == False
-    assert f("aaa", "ab*a*c*a") == True
-    assert f("a", "ab*a") == False
-    assert f("aaa", "a*") == True
+    assert f("a", ".*..a*") is False
+    assert f("a", "ab*") is True
+    assert f("aa", "a*") is True
+    assert f("a", "ab..a*") is False
+    assert f("aaa", "ab*a*c*a") is True
+    assert f("a", "ab*a") is False
+    assert f("aaa", "a*") is True
     print('Pass:{}'.format(str(c.__class__)))
 
 
