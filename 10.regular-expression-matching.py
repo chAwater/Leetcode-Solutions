@@ -1,5 +1,7 @@
 # https://leetcode-cn.com/problems/regular-expression-matching/
 
+import re
+
 
 class Solution1:
     '''
@@ -86,7 +88,23 @@ class Solution1:
         return True
 
 
+class Solution2:
+    '''
+    Date: 2022.04.10
+    Pass/Error/Bug: 1/1/0
+    执行用时：  64 ms, 在所有 Python3 提交中击败了 28.68% 的用户
+    内存消耗：15.1 MB, 在所有 Python3 提交中击败了 34.64% 的用户
+    '''
+    def isMatch(self, s: str, p: str) -> bool:
+        m = re.search('^' + p + '$', s)
+        if m:
+            return True
+        else:
+            return False
+
+
 c1 = Solution1()
+c2 = Solution2()
 
 
 def test(c):
@@ -102,3 +120,4 @@ def test(c):
 
 
 test(c1)
+test(c2)
