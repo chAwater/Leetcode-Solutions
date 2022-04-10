@@ -74,7 +74,24 @@ class Solution1:
             return (self.findKth(nums1, nums2, k1) + self.findKth(nums1, nums2, k2)) / 2
 
 
+class Solution2:
+    '''
+    Date: 2022.04.10
+    Pass/Error/Bug: 1/0/0
+    执行用时：  36 ms, 在所有 Python3 提交中击败了 97.34% 的用户
+    内存消耗：15.1 MB, 在所有 Python3 提交中击败了 53.07% 的用户
+    '''
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        newlist = sorted(nums1 + nums2)
+        length = len(newlist)
+        if length % 2:
+            return newlist[length//2]
+        else:
+            return (newlist[length//2-1] + newlist[length//2])/2
+
+
 c1 = Solution1()
+c2 = Solution2()
 
 
 def test(c):
@@ -93,3 +110,4 @@ def test(c):
 
 
 test(c1)
+test(c2)
