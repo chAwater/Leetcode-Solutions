@@ -48,7 +48,7 @@ class Solution2:
             for sub_s in s:
                 o_lists[idx] += sub_s
                 if flag == 0:
-                    if idx == numRows-1:
+                    if idx == numRows - 1:
                         idx -= 1
                         flag = 1
                     else:
