@@ -28,7 +28,7 @@ class Solution1:
             else:
                 # One big step one small step
                 # eg. the first row of |\|, |\ is small step, \| is the big step
-                step = [total - 2*n, 2*n]
+                step = [total - 2 * n, 2 * n]
 
             while n+idx < len(s):
                 o += s[n+idx]
