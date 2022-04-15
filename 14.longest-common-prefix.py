@@ -37,3 +37,24 @@ class Solution2:
             else:
                 break
         return r
+
+
+class Solution3:
+    '''
+    Date: 2022.04.15
+    Pass/Error/Bug: 1/0/0
+    执行用时：  40 ms, 在所有 Python3 提交中击败了 51.66% 的用户
+    内存消耗：15.1 MB, 在所有 Python3 提交中击败了 24.77% 的用户
+    '''
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs) == 0:
+            return ''
+
+        a, b = min(strs), max(strs)
+        r = ''
+        for t in list(zip(a, b)):
+            if t[0] == t[1]:
+                r += t[0]
+            else:
+                break
+        return r
