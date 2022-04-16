@@ -68,3 +68,49 @@ class Solution:
             rs.append(r)
 
         return rs
+
+
+class Solution2:
+    '''
+    Date: 2022.04.14
+    Pass/Error/Bug: 1/6/4
+    执行用时：3904 ms, 在所有 Python3 提交中击败了  8.33% 的用户
+    内存消耗：19.0 MB, 在所有 Python3 提交中击败了  5.01% 的用户
+    '''
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 3:
+            return []
+
+        nums = sorted(nums)
+        ls = len(nums)
+        rs = []
+        flag_dict = {}
+
+        upper = len(nums) - 1
+        idx1, idx2, idx3 = 0, 1, 2
+
+        for idx1 in range(ls):
+            idx2 = idx1 + 1
+            idx3 = ls - 1
+
+            if nums[idx1] > 0:
+                break
+
+            while idx2 < idx3:
+                candidate = [ nums[idx1], nums[idx2], nums[idx3] ]
+                sum3 = sum(candidate)
+
+                if sum3 > 0:
+                    idx3 -= 1
+                elif sum3 < 0:
+                    idx2 += 1
+                else:
+                    flag = ':'.join([str(i) for i in candidate])
+                    if flag not in flag_dict:
+                        rs.append(candidate)
+                        flag_dict[flag] = 1
+                    idx2 += 1
+                    idx3 -= 1
+
+        return rs
+
