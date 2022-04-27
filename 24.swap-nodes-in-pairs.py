@@ -12,8 +12,8 @@ class Solution1:
     '''
     Date: 2022.04.26
     Pass/Error/Bug: 3/0/0
-    执行用时：  32 ms, 在所有 Python3 提交中击败了 89.624% 的用户
-    内存消耗：15.0 MB, 在所有 Python3 提交中击败了   7.60% 的用户
+    执行用时：  32 ms, 在所有 Python3 提交中击败了 89.62% 的用户
+    内存消耗：15.0 MB, 在所有 Python3 提交中击败了  7.60% 的用户
     '''
     def swapPairs(self, head: ListNode) -> ListNode:
 
