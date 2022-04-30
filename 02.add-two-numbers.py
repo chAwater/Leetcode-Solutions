@@ -88,43 +88,65 @@ class Solution2:
 
 class Solution3:
     '''
-    Date: 2022.03.31
-    Pass/Error/Bug: 1/1/3
-    执行用时：64.0 ms, 在所有 Python3 提交中击败了 44.19% 的用户
-    内存消耗：15.1 MB, 在所有 Python3 提交中击败了 25.37% 的用户
+    Date: 2022.04.30
+    Pass/Error/Bug: 3/3/8
+    执行用时：60.0 ms, 在所有 Python3 提交中击败了 72.57% 的用户
+    内存消耗：14.9 MB, 在所有 Python3 提交中击败了 82.98% 的用户
     '''
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         idx = 0
         carry = 0
-        out = []
+
+        head = ListNode(0)
+        cache1 = None
+        cache2 = None
 
         while True:
 
-            v1 = l1.val if l1 else 0
-            v2 = l2.val if l2 else 0
+            if l1:
+                v1 = l1.val
+                if l1.next:
+                    l1 = l1.next
+                else:
+                    l1 = None
+            else:
+                v1 = 0
+
+            if l2:
+                v2 = l2.val
+                if l2.next:
+                    l2 = l2.next
+                else:
+                    l2 = None
+            else:
+                v2 = 0
 
             sum_val = v1 + v2 + carry
             add_val = sum_val // 10
             new_val = sum_val % 10
 
-            l1 = l1.next if (l1 and l1.next) else None
-            l2 = l2.next if (l2 and l2.next) else None
-
             if sum_val != 0:
-                out.append(ListNode(new_val))
                 if idx != 0:
-                    out[idx-1].next = out[idx]
+                    cache2 = ListNode(new_val)
+                    cache1.next = cache2
+                    cache1 = cache2
+                else:
+                    head = ListNode(new_val)
+                    cache1 = head
 
                 carry = add_val
                 idx += 1
             elif (l1 or l2):
-                out.append(ListNode(0))
-                out[idx-1].next = out[idx]
+                if idx != 0:
+                    cache2 = ListNode(0)
+                    cache1.next = cache2
+                    cache1 = cache2
+                else:
+                    head = ListNode(0)
+                    cache1 = head
+
                 idx += 1
             else:
                 break
 
-        if len(out) == 0:
-            return ListNode(0)
-        else:
-            return out[0]
+        return head
