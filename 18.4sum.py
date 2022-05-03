@@ -27,7 +27,7 @@ class Solution1:
         for idx1 in range(len(unums)):
             v1 = unums[idx1]
             if (ndict[v1] >= 4) and (v1 * 4 == target):
-                    rs.append( [v1] * 4 )
+                rs.append( [v1] * 4 )
             elif ndict[v1] >= 3:
                 res = target - v1*3
                 if (res in ndict) and (res != v1):
