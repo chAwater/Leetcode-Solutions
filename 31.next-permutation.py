@@ -9,9 +9,10 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         length = len(nums)
-        for i in range(length):
-            if nums[length-i-2] < nums[length-i-1]:
-                nums[length-i-1], nums[length-i-2] = nums[length-i-2], nums[length-i-1]
-                return
 
+        for idx in range(length-1, 0, -1):
+            if nums[idx] > nums[idx-1]:
+                nums[idx-1], nums[idx] = nums[idx], nums[idx-1]
+                nums[idx:] = sorted(nums[idx:])
+                return
         nums.reverse()
