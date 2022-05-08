@@ -51,9 +51,9 @@ class Solution2:
 class Solution3:
     '''
     Date: 2022.05.06
-    Pass/Error/Bug: 1/0/0
-    执行用时：  48 ms, 在所有 Python3 提交中击败了  6.93% 的用户
-    内存消耗：15.3 MB, 在所有 Python3 提交中击败了 22.71% 的用户
+    Pass/Error/Bug: 2/0/0
+    执行用时：  36 ms, 在所有 Python3 提交中击败了 73.16% 的用户
+    内存消耗：15.3 MB, 在所有 Python3 提交中击败了  9.50% 的用户
     '''
     def search(self, nums: List[int], target: int) -> int:
         ls = len(nums)
@@ -65,14 +65,11 @@ class Solution3:
                 return -1
 
         a = self.search(nums[:ls // 2], target)
-        b = self.search(nums[ls // 2:], target)
 
         if (a != -1):
-            if (b == -1):
-                return a
-            else:
-                return -1
+            return a
         else:
+            b = self.search(nums[ls // 2:], target)
             if (b != -1):
                 return ls // 2 + b
             else:
