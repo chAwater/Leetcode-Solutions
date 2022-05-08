@@ -6,6 +6,24 @@ from typing import List
 class Solution1:
     '''
     Date: 2022.05.06
+    Pass/Error/Bug: 1/0/0
+    执行用时：  40 ms, 在所有 Python3 提交中击败了 45.86% 的用户
+    内存消耗：15.1 MB, 在所有 Python3 提交中击败了 89.88% 的用户
+    '''
+    def search(self, nums: List[int], target: int) -> int:
+        idx = 0
+        while idx < len(nums):
+            if target == nums[idx]:
+                return idx
+
+            idx += 1
+
+        return -1
+
+
+class Solution2:
+    '''
+    Date: 2022.05.06
     Pass/Error/Bug: 1/1/1
     执行用时：  40 ms, 在所有 Python3 提交中击败了 45.86% 的用户
     内存消耗：15.2 MB, 在所有 Python3 提交中击败了 44.31% 的用户
@@ -30,7 +48,7 @@ class Solution1:
         return -1
 
 
-class Solution2:
+class Solution3:
     '''
     Date: 2022.05.06
     Pass/Error/Bug: 1/0/0
