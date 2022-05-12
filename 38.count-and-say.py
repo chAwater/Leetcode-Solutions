@@ -6,7 +6,7 @@ class Solution:
         if n == 1:
             return '1'
         return self.say( self.countAndSay(n-1) )
-        
+
     def say(self, inputs: str) -> str:
         if inputs == '1':
             return '11'
@@ -22,7 +22,6 @@ class Solution:
                     res += str(count) + pre
                     pre = sub
                     count = 1
-    
+
             res += str(count) + pre
             return res
-
