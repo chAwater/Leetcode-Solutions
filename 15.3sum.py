@@ -3,7 +3,7 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
     '''
     Date: 2022.04.16
     Pass/Error/Bug: 1/0/0

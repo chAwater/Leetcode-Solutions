@@ -3,7 +3,13 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
+    '''
+    Date: 2022.05.11
+    Pass/Error/Bug: 1/2/0
+    执行用时： 376 ms, 在所有 Python3 提交中击败了 66.67% 的用户
+    内存消耗：15.6 MB, 在所有 Python3 提交中击败了 13.59% 的用户
+    '''
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
 
         total_s = ''.join(words)
@@ -12,16 +18,22 @@ class Solution:
         l_word = window_l // n_words
         rs = []
 
+        wdict = {}
+        for w in words:
+            if w in wdict:
+                wdict[w] += 1
+            else:
+                wdict[w] = 1
+
         for window_i in range(len(s)-window_l+1):
             sub_s = s[window_i : window_i+window_l]
-            wdict = dict(zip(words, [0]*n_words))
+            cdict = dict(zip(words, [0]*n_words))
             good_flag = 1
             for word_i in range(0, window_l, l_word):
                 sub_w = sub_s[word_i:word_i+l_word]
-                if sub_w in wdict:
-                    if wdict[sub_w] == 0:
-                        wdict[sub_w] = 1
-                    else:
+                if sub_w in cdict:
+                    cdict[sub_w] += 1
+                    if cdict[sub_w] > wdict[sub_w]:
                         good_flag = 0
                         break
                 else:
@@ -31,34 +43,3 @@ class Solution:
                 rs.append(window_i)
 
         return rs
-
-
-
-class Solution:
-    def findSubstring(self, s: str, words: List[str]) -> List[int]:
-
-        idict = list( map(lambda x: ''.join(x), zip(*words)) )
-        idx_dict = 0
-        idx_s = 0
-        flag = 0
-
-        rs = []
-        c_rs = []
-
-        while idx_s < len(s):
-            if s[idx_s] in idict[idx_dict]:
-                idx_s += 1
-                idx_dict += 1
-
-                if idx_dict == len(idict):
-                    flag += 1
-                    if flag == len(words):
-                        c_rs.append(idx_s-idx_dict*flag)
-                        flag = 0
-                    idx_dict = 0
-            else:
-                idx_s += 1
-                idx_dict = 0
-
-        return c_rs
-

@@ -3,29 +3,33 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
+    '''
+    Date: 2022.05.10
+    Pass/Error/Bug: 1/3/0
+    执行用时：  40 ms, 在所有 Python3 提交中击败了 44.49% 的用户
+    内存消耗：15.5 MB, 在所有 Python3 提交中击败了 83.43% 的用户
+    '''
     def searchInsert(self, nums: List[int], target: int) -> int:
 
         length = len(nums)
         if length <= 3:
             if target in nums:
-                for i,v in enumerate(nums):
-                    if target == v:
-                        return i
+                return nums.index(target)
             else:
-                for i,v in enumerate(nums):
-                    if target > v:
-                        return i+1
+                for idx in range(len(nums)):
+                    if target < nums[idx]:
+                        return idx
 
-                return i+2
-    
+                return idx+1
+
         ls = length // 2
 
         if nums[ls] > target:
-            return self.searchInsert(nums[:ls+1], target)
+            return self.searchInsert(nums[:ls], target)
         elif nums[ls] < target:
             rs = self.searchInsert(nums[ls:], target)
-            return ls + rs + 1
+            return ls + rs
         else:
             rs = []
             for i,v in enumerate(nums):

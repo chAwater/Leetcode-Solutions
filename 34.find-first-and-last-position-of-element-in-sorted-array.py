@@ -3,7 +3,13 @@
 from typing import List
 
 
-class Solution:
+class Solution1:
+    '''
+    Date: 2022.05.09
+    Pass/Error/Bug: 1/0/0
+    执行用时：  40 ms, 在所有 Python3 提交中击败了 52.44% 的用户
+    内存消耗：16.1 MB, 在所有 Python3 提交中击败了 10.31% 的用户
+    '''
     def searchRange(self, nums: List[int], target: int) -> List[int]:
 
         length = len(nums)
@@ -27,11 +33,9 @@ class Solution:
                 return [ls + r for r in rs]
             else:
                 return rs
-        else: 
+        else:
             rs = []
             for i,v in enumerate(nums):
                 if target == v:
                     rs.append(i)
             return [rs[0], rs[-1]]
-
-        
