@@ -69,6 +69,34 @@ class Solution2:
                     max_sub_l = sub_l
 
 
+class Solution3:
+    '''
+    Date: 2022.08.20
+    Pass/Error/Bug: 1/2/0
+    执行用时：  80 ms, 在所有 Python3 提交中击败了 39.43% 的用户
+    内存消耗：15.0 MB, 在所有 Python3 提交中击败了 86.96% 的用户
+    '''
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_sub_l = 0
+        max_l = len(s)
+
+        i_start = 0
+        i_end = 1
+
+        while i_end < max_l:
+            sub_s = s[i_start:i_end]
+            next_s = s[i_end]
+            max_sub_l = max(max_sub_l, len(sub_s))
+            if next_s in sub_s:
+                i_start += 1
+            else:
+                i_end += 1
+
+        sub_s = s[i_start:i_end]
+        max_sub_l = max(max_sub_l, len(sub_s))
+        return max_sub_l
+
+
 def test(c):
     f = c.lengthOfLongestSubstring
     assert f('au') == 2, f('au')
